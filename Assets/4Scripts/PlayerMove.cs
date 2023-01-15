@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    private void Awake()
+    {
+        Application.targetFrameRate = 40;
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow))
@@ -26,17 +30,22 @@ public class PlayerMove : MonoBehaviour
         }
         if (Mathf.Abs(transform.position.x) > 2 )
         {
-            transform.position = new Vector3(reposition(transform.position.x), transform.position.y, 0);
+            transform.position = reposition_x();
         }
         if (Mathf.Abs(transform.position.y) > 2)
         {
-            transform.position = new Vector3(transform.position.x, reposition(transform.position.y), 0);
+            transform.position = reposition_y();
         }
     }
 
-    private float reposition(float t)
+    private Vector3 reposition_x()
     {
-        float x = t * -2 / 3;
-        return x;
+        return new Vector3(transform.position.x * -2 / 3, transform.position.y, 0);
     }
+    private Vector3 reposition_y()
+    {
+        return new Vector3(transform.position.x, transform.position.y * -2 / 3, 0);
+    }
+
+
 }

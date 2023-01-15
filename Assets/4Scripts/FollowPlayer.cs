@@ -10,7 +10,6 @@ public class FollowPlayer : MonoBehaviour
 
     private void Update()
     {
-        Vector3 position = player.transform.position;
-        transform.position = Vector2.Lerp(transform.position, player.transform.position, lerpSpeed);
+        transform.position = Vector2.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
     }
 }
