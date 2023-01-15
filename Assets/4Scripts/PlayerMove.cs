@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private void Awake()
-    {
-        Application.targetFrameRate = 40;
-    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow))
