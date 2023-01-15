@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.02
+  lerpSpeed: 6
 --- !u!212 &336532514
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.2
+  lerpSpeed: 12
 --- !u!212 &775396671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.06
+  lerpSpeed: 9
 --- !u!212 &904625221
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.1
+  lerpSpeed: 11
 --- !u!212 &1089932041
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.04
+  lerpSpeed: 8
 --- !u!212 &1227241184
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.08
+  lerpSpeed: 10
 --- !u!212 &1495908556
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 0.03
+  lerpSpeed: 7
 --- !u!212 &1918230921
 SpriteRenderer:
   m_ObjectHideFlags: 0
