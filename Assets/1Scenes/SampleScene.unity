@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveEffectPrefab: {fileID: 3718118073091152754, guid: f1a4bb2dea0809840b34d815e28c66be, type: 3}
   speed: 50
-  min: 30
-  max: 100
+  scaleMin: 0
+  scaleMax: 100
   effectCount: 10
 --- !u!1 &1638421352
 GameObject:
