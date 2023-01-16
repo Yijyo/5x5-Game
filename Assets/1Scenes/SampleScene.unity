@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 12
+  lerpSpeed: 15
 --- !u!212 &775396671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 11
+  lerpSpeed: 12
 --- !u!212 &1089932041
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593460532}
-  lerpSpeed: 10
+  lerpSpeed: 9
 --- !u!212 &1495908556
 SpriteRenderer:
   m_ObjectHideFlags: 0
