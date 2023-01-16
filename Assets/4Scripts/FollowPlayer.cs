@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-
     [SerializeField]
     public float lerpSpeed;
     private Transform player;
-
-    
 
     public void Setup(Transform player,float lerpSpeed)
     {
