@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = reposition_y();
         }
-        Debug.Log("Hello");
+        
     }
 
     private Vector3 reposition_x()
