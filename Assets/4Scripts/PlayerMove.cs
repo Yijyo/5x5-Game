@@ -42,4 +42,6 @@ public class PlayerMove : MonoBehaviour
     {
         return new Vector3(transform.position.x, transform.position.y * -2 / 3, 0);
     }
+
+
 }
