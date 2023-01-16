@@ -6,10 +6,10 @@ public class FollowPlayer : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
-    public float lerpSpeed;
+    public float speed;
 
     private void Update()
     {
-        transform.position = Vector2.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 }
