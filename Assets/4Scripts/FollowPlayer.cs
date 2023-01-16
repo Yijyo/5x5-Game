@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject player;
-    public float lerpSpeed;
 
+    [SerializeField]
+    public float lerpSpeed;
+    public Transform player;
+
+
+    public void Setup(Transform player,float lerpSpeed)
+    {
+        this.player = player;
+        this.lerpSpeed = lerpSpeed;
+
+    }
     private void Update()
     {
-        transform.position = Vector2.Lerp(transform.position, player.transform.position, lerpSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, player.position, lerpSpeed * Time.deltaTime);
     }
 }
