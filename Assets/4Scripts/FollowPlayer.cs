@@ -7,8 +7,9 @@ public class FollowPlayer : MonoBehaviour
 
     [SerializeField]
     public float lerpSpeed;
-    public Transform player;
+    private Transform player;
 
+    
 
     public void Setup(Transform player,float lerpSpeed)
     {
