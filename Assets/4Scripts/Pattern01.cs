@@ -8,6 +8,8 @@ public class Pattern01 : MonoBehaviour
     private GameObject patternPrefab;
     [SerializeField]
     private float spawnCycle;
+    private int flag = 1;
+    private Vector3 direction = new Vector3(1, 0, 0).normalized;
 
     private void OnEnable()
     {
@@ -26,8 +28,16 @@ public class Pattern01 : MonoBehaviour
 
         while (true)
         {
-            Vector3 position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+            int x = RandomX(); int y = RandomY();
+            if (x == 10) { Vector3 direction = new Vector3(-1, 0, 0).normalized; }
+            if (x == -10) { Vector3 direction = new Vector3(1, 0, 0).normalized; }
+            if (y == 5) { Vector3 direction = new Vector3(0, -1, 0).normalized; }
+            if (y == -5) { Vector3 direction = new Vector3(0, 1, 0).normalized; }
+
+            Vector3 position = new Vector3(x, y, 0);
             Instantiate(patternPrefab, position, Quaternion.identity);
+            patternPrefab.GetComponent<PatternSquareMove>().MoveTo(direction);
+
 
             yield return new WaitForSeconds(spawnCycle);
         }
@@ -35,22 +45,30 @@ public class Pattern01 : MonoBehaviour
 
     private int RandomX()
     {
+        flag *= -1;
         int num = Random.Range(-10, 11);
+
         if (num > -3 && num < 3)
         {
-
+            return num;
         }
 
-        return num;
+        else num = 10;
+
+        return num * flag;
     }
     private int RandomY()
     {
-        int num = Random.Range(-10, 11);
+        flag *= -1;
+        int num = Random.Range(-6, 6);
+
         if (num > -3 && num < 3)
         {
-
+            return num;
         }
 
-        return num;
+        else num = 5;
+
+        return num * flag;
     }
 }
