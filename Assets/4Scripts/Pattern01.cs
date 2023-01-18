@@ -9,11 +9,14 @@ public class Pattern01 : MonoBehaviour
     [SerializeField]
     private float spawnCycle;
     private int flag = 1;
-    private Vector3 direction = new Vector3(1, 0, 0).normalized;
+    private int x, y;
+    private Vector3 direction;
+
 
     private void OnEnable()
     {
         StartCoroutine(nameof(SpawnPattern));
+
     }
 
     private void OnDisable()
@@ -28,47 +31,41 @@ public class Pattern01 : MonoBehaviour
 
         while (true)
         {
-            int x = RandomX(); int y = RandomY();
-            if (x == 10) { Vector3 direction = new Vector3(-1, 0, 0).normalized; }
-            if (x == -10) { Vector3 direction = new Vector3(1, 0, 0).normalized; }
-            if (y == 5) { Vector3 direction = new Vector3(0, -1, 0).normalized; }
-            if (y == -5) { Vector3 direction = new Vector3(0, 1, 0).normalized; }
+            int num = Random.Range(0, 2); //num = 0 일시 상하 , 1일시 좌우
+            if (num == 0)  // 상,하 움직임
+            {
+                y = SetXy(num);
+                direction = new Vector3(0,flag,0);
+            }
+            if (num == 1) // 좌,우 움직임
+            {
+                x = SetXy(num);
+                direction = new Vector3(flag, 0, 0);
+            }
 
             Vector3 position = new Vector3(x, y, 0);
-            Instantiate(patternPrefab, position, Quaternion.identity);
-            patternPrefab.GetComponent<PatternSquareMove>().MoveTo(direction);
+            GameObject clone = Instantiate(patternPrefab, position, Quaternion.identity);
+            clone.GetComponent<PatternSquareMove>().MoveTo(direction);
 
 
             yield return new WaitForSeconds(spawnCycle);
         }
     }
 
-    private int RandomX()
+
+
+    private int SetXy(int num)
     {
         flag *= -1;
-        int num = Random.Range(-10, 11);
-
-        if (num > -3 && num < 3)
+        if (num == 0)     // 상, 하 움직임 
         {
-            return num;
+            x = Random.Range(-2, 3);
+            return -6 * flag;
         }
-
-        else num = 10;
-
-        return num * flag;
-    }
-    private int RandomY()
-    {
-        flag *= -1;
-        int num = Random.Range(-6, 6);
-
-        if (num > -3 && num < 3)
+        else              // 좌, 우 움직임
         {
-            return num;
+            y = Random.Range(-2, 3);
+            return -10 * flag;
         }
-
-        else num = 5;
-
-        return num * flag;
     }
 }
