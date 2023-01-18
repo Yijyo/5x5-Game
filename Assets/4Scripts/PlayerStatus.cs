@@ -28,7 +28,7 @@ public class PlayerStatus : MonoBehaviour
     {
         gameObject.layer = 11;
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Invoke("OffDamaged", 1);
     }
 
