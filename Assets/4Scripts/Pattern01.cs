@@ -35,7 +35,21 @@ public class Pattern01 : MonoBehaviour
 
     private int RandomX()
     {
-        int num = 0;
+        int num = Random.Range(-10, 11);
+        if (num > -3 && num < 3)
+        {
+
+        }
+
+        return num;
+    }
+    private int RandomY()
+    {
+        int num = Random.Range(-10, 11);
+        if (num > -3 && num < 3)
+        {
+
+        }
 
         return num;
     }
