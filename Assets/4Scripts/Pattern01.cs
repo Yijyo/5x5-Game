@@ -9,7 +9,7 @@ public class Pattern01 : MonoBehaviour
     [SerializeField]
     private float spawnCycle;
     private int flag = 1;
-    private int x, y;
+    private int x, y,z;
     private Vector3 direction;
 
 
@@ -41,11 +41,17 @@ public class Pattern01 : MonoBehaviour
             {
                 x = SetXy(num);
                 direction = new Vector3(flag, 0, 0);
+        
             }
 
+            //좌 -> 우 일때 num = 1 , flag = 1
+            //우 -> 좌 일때 num = 1 , flag = -1
             Vector3 position = new Vector3(x, y, 0);
             GameObject clone = Instantiate(patternPrefab, position, Quaternion.identity);
+            clone.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, z);
             clone.GetComponent<PatternSquareMove>().MoveTo(direction);
+ 
+            
 
 
             yield return new WaitForSeconds(spawnCycle);
@@ -59,11 +65,16 @@ public class Pattern01 : MonoBehaviour
         flag *= -1;
         if (num == 0)     // 상, 하 움직임 
         {
+            if (flag == -1) z = -90;
+            else z = 90;
+
             x = Random.Range(-2, 3);
             return -6 * flag;
         }
         else              // 좌, 우 움직임
         {
+            if (flag == -1) z = 180;
+            else z = 0;
             y = Random.Range(-2, 3);
             return -10 * flag;
         }
