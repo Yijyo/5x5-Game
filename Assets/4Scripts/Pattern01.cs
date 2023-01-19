@@ -56,7 +56,7 @@ public class Pattern01 : MonoBehaviour
             if (num == 0)  // 상,하 움직임
             {
                 y = SetXy(num);
-                direction = new Vector3(0,flag,0);
+                direction = new Vector3(0, flag, 0);
             }
             if (num == 1) // 좌,우 움직임
             {
