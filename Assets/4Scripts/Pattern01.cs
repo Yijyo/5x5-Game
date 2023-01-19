@@ -7,11 +7,28 @@ public class Pattern01 : MonoBehaviour
     [SerializeField]
     private GameObject patternPrefab;
     [SerializeField]
+    private GameObject gameManager;
+    [SerializeField]
     private float spawnCycle;
+
     private int flag = 1;
     private int x, y,z;
     private Vector3 direction;
 
+    private void Awake()
+    {
+        //gameManager = GetComponent<GameManager>();
+    }
+
+    private void Update()
+    {
+        //Debug.Log(gameManager.GetComponent<GameManagers>().timeStart);
+
+        /*if (gameManagers.timeStart > 5)
+        {
+            StopAllCoroutines();
+        }*/
+    }
 
     private void OnEnable()
     {
@@ -51,9 +68,6 @@ public class Pattern01 : MonoBehaviour
             clone.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, z);
             clone.GetComponent<PatternSquareMove>().MoveTo(direction);
  
-            
-
-
             yield return new WaitForSeconds(spawnCycle);
         }
     }
