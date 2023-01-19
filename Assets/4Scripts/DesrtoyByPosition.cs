@@ -12,4 +12,5 @@ public class DesrtoyByPosition : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
