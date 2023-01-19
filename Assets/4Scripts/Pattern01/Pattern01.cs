@@ -27,6 +27,8 @@ public class Pattern01 : MonoBehaviour
         {
             OnEnable();
         }*/
+
+        
     }
 
     private float GameSetSec()
