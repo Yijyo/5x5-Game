@@ -10,7 +10,6 @@ public class PlayerStatus : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private void Awake()
     {
-        //player = GetComponent<GameObject>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
