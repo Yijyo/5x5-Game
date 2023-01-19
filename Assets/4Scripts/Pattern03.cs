@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,7 +13,7 @@ public class Pattern03 : MonoBehaviour
     [SerializeField]
     private float spawnCycle;
 
-    private GameObject clone;
+    private List<GameObject> clone;
 
     private void OnEnable()
     {
@@ -38,10 +39,14 @@ public class Pattern03 : MonoBehaviour
                 for (int j = -1; j < 2; j++)
                 {
                     Vector3 position = new Vector3(x + i, y + j, 0);
-                    clone = Instantiate(patternPrefab, position, Quaternion.identity);
+                    //clone.Add(Instantiate(patternPrefab, position, Quaternion.identity));
                 }
             }
             yield return new WaitForSeconds(spawnCycle);
+            /*foreach (GameObject go in clone)
+            {
+                Destroy(go);
+            }*/
         }
     }
 }

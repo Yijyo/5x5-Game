@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float timeStart;
     [SerializeField]
     private TextMeshProUGUI timeText;
+    public float timeStart;
 
     public bool timeActive = false;
 
