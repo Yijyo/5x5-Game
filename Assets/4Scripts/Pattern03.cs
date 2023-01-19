@@ -39,7 +39,8 @@ public class Pattern03 : MonoBehaviour
                 for (int j = -1; j < 2; j++)
                 {
                     Vector3 position = new Vector3(x + i, y + j, 0);
-                    //clone.Add(Instantiate(patternPrefab, position, Quaternion.identity));
+                    GameObject t = Instantiate(patternPrefab, position, Quaternion.identity);
+                    //clone.Add(t);
                 }
             }
             yield return new WaitForSeconds(spawnCycle);
