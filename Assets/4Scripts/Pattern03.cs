@@ -33,7 +33,6 @@ public class Pattern03 : MonoBehaviour
             int x = Random.Range(-2, 3);
             int y = Random.Range(-2, 3);
 
-
             for (int i = -1; i < 2; i++)
             {
                 for (int j = -1; j < 2; j++)
