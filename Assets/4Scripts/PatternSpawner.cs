@@ -2,25 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Patterns { pattern01 = 0, pattern02 }
+public enum Patterns { pattern01 = 0, pattern03 }
 
 public class PatternSpawner : MonoBehaviour
 {
-    [Header("Pattern01")]
+
+    [Header("Common")]
+    [SerializeField]
+    private float delayTime = 3;
     [SerializeField]
     private GameObject[] patternPrefab;
+
+    [Header("Pattern01")]
     [SerializeField]
     private GameObject pt01Prefab;
     [SerializeField]
     private float pt01SpawnCycle;
     [SerializeField]
-    private float pt01time = 5;
+    private float pt01time = 10;
 
-    [Header("Common")]
+    [Header("Pattern03")]
     [SerializeField]
-    private float delayTime = 3;
+    private GameObject pt03Prefab;
+    [SerializeField]
+    private GameObject pt03Boom;
+    [SerializeField]
+    private float pt03SpawnCycle = 1;
+    [SerializeField]
+    private float pt03time = 10;
 
-    private Patterns pattern = Patterns.pattern01;
+     
+
+    private Patterns pattern = Patterns.pattern03;
     public void Start()
     {
         ChangePattern(pattern);
@@ -91,6 +104,48 @@ public class PatternSpawner : MonoBehaviour
             yield return new WaitForSeconds(pt01SpawnCycle);
         }
     }
+    private IEnumerator pattern03()
+    {
+        float waitTime = 1;
+        List<GameObject> clone_patter03 = new List<GameObject>();
+        while (true)
+        {
+            // 랜덤 좌표 x, y값 생성
+            int x = Random.Range(-2, 3);
+            int y = Random.Range(-2, 3);
+
+            Vector3 position_bomb = new Vector3(x, y, 0);
+
+            // 랜덤 좌표 x, y에 폭탄 이미지 생성
+            GameObject clone_bomb = Instantiate(pt03Boom, position_bomb, Quaternion.identity);
+
+            // waittime 기다리고
+            yield return new WaitForSeconds(waitTime);
+
+            // 폭탄 이미지 제거
+            Destroy(clone_bomb);
+
+            // 랜덤 좌표 x, y기준으로 3x3 크기의 패턴 생성
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    Vector3 position = new Vector3(x + i, y + j, 0);
+                    GameObject clone_pattern03 = Instantiate(pt03Prefab, position, Quaternion.identity);
+                    clone_patter03.Add(clone_pattern03);
+                }
+            }
+            yield return new WaitForSeconds(pt03SpawnCycle);
+            // 3x3 패턴 제거
+            foreach (GameObject go in clone_patter03)
+            {
+                Destroy(go);
+            }
+        }
+    }
+
+
+
 
     private IEnumerator patternTime(float time)   //패턴 지속시간
     {
