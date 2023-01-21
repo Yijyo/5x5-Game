@@ -378,7 +378,7 @@ MonoBehaviour:
   pt01time: 10
   pt03Prefab: {fileID: 7337042749066850541, guid: 59de5b368a09bae418161939a36c83b7, type: 3}
   pt03Boom: {fileID: 4826990805499612208, guid: 6f97f447a04e6404f8cc5be1fbfa5c34, type: 3}
-  pt03SpawnCycle: 1
+  pt03SpawnCycle: 0.1
   pt03time: 10
 --- !u!4 &335210734
 Transform:
