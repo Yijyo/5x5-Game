@@ -18,6 +18,7 @@ public class PatternSpawner : MonoBehaviour
 
     
 
+
     public void ChangePattern()
     {
         //pattern01 = GetComponent<Pattern01>();
