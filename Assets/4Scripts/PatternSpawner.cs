@@ -13,10 +13,10 @@ public class PatternSpawner : MonoBehaviour
     private GameObject pt01Prefab;
     [SerializeField]
     private float pt01SpawnCycle;
-    [Header("Common")]
     [SerializeField]
     private float pt01time = 5;
 
+    [Header("Common")]
     [SerializeField]
     private float delayTime = 3;
 
