@@ -7,10 +7,7 @@ using UnityEngine;
 public class PatternSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject gameManager;
-    [SerializeField]
     private Pattern01 pattern01;
-    private int phase = 1;
     //private Patterns pattern = Patterns.pattern01;
 
 
@@ -30,9 +27,5 @@ public class PatternSpawner : MonoBehaviour
     }
 
 
-    private float GameSetSec()
-    {
-        //게임 시간을 받는 함수
-        return gameManager.GetComponent<GameManager>().timeStart;
-    }
+
 }
