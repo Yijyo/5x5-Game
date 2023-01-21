@@ -47,6 +47,7 @@ public class PatternSpawner : MonoBehaviour
         int flag = 1;
         int x=0, y=0, z=0;
         int hell = 1;  //hell 난이도 테스트용.
+        int N01 = 0; //hell 난이도 테스트용
         Vector3 direction = new Vector3(0, 0, 0);
 
         int SetXy(int num)
@@ -87,14 +88,17 @@ public class PatternSpawner : MonoBehaviour
             //좌 -> 우 일때 num = 1 , flag = 1
             //우 -> 좌 일때 num = 1 , flag = -1
             Vector3 position = new Vector3(x, y, 0);
-            GameObject clone = Instantiate(patternInfo[N].patternPrefab[0], position, Quaternion.identity);
+            GameObject clone = Instantiate(patternInfo[N].patternPrefab[N01], position, Quaternion.identity);
             clone.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, z);
             clone.GetComponent<PatternSquareMove>().MoveTo(direction);
 
             yield return new WaitForSeconds(patternInfo[N].spawnCycle);
             hell++;
-            if (hell > 30)
-                patternInfo[N].spawnCycle = 0.2f;
+            if (hell > 20)
+            {
+                N01 = 1;
+                patternInfo[N].spawnCycle = 0.3f;
+            }
         }
     }
     private IEnumerator pattern03()

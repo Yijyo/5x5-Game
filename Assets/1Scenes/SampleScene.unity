@@ -377,6 +377,7 @@ MonoBehaviour:
   patternInfo:
   - patternPrefab:
     - {fileID: 5764945042045680986, guid: 5cad980fc1f9e0b4da11353d78629e7b, type: 3}
+    - {fileID: 2552732800083838131, guid: bc90e7faa97504e4dbb52073becc16bd, type: 3}
     spawnCycle: 0.5
     patternTime: 10
   - patternPrefab:
@@ -865,7 +866,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593460532}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
