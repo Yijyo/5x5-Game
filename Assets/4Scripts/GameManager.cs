@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         timeActive = true;
         timeText.text = timeStart.ToString("F2");
+        
     }
     private void Update()
     {

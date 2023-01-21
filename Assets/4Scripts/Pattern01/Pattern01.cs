@@ -6,8 +6,7 @@ public class Pattern01 : MonoBehaviour
 {
     [SerializeField]
     private GameObject patternPrefab;
-    [SerializeField]
-    private GameObject gameManager;
+
     [SerializeField]
     private float spawnCycle;
 
@@ -15,41 +14,9 @@ public class Pattern01 : MonoBehaviour
     private int x, y, z;
     private Vector3 direction;
 
-    private void Update()
-    {   
-        // 게임 시간이 5초가 지나면 패턴01 종료
-        if(GameSetSec() > 5 && GameSetSec() < 6)
-        {
-            OnDisable();
-        }
-        //다시 시작하는 코드를 만들어야 되는데 모르겠다..
-        /*if(GameSetSec() > 14 && GameSetSec() < 14)
-        {
-            OnEnable();
-        }*/
-
-        
-    }
-
-    private float GameSetSec()
-    {
-        // 게임 시간을 받는 함수
-        return gameManager.GetComponent<GameManager>().timeStart;
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(nameof(SpawnPattern));
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(nameof(SpawnPattern));
-    }
-
     private IEnumerator SpawnPattern()
     {
-        float waitTime = 1;
+        float waitTime = 3;
         yield return new WaitForSeconds(waitTime);
 
         while (true)
