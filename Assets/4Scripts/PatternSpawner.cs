@@ -13,20 +13,26 @@ public class PatternSpawner : MonoBehaviour
     private GameObject pt01Prefab;
     [SerializeField]
     private float pt01SpawnCycle;
+    [Header("Common")]
     [SerializeField]
     private float pt01time = 5;
 
+    [SerializeField]
+    private float delayTime = 3;
+
+    private Patterns pattern = Patterns.pattern01;
     public void Start()
     {
-        ChangePattern(0);
+        ChangePattern(pattern);
     }
 
     public void ChangePattern(Patterns newPattern)
     {
         StopCoroutine(newPattern.ToString());
-        StartCoroutine("patternDelay", newPattern); //패턴과 패턴 사이 딜레이 시간
-        //StartCoroutine(newPattern.ToString());
+        StartCoroutine("patternDelay"); //패턴과 패턴 사이 딜레이 시간
         StartCoroutine("patternTime",pt01time); //패턴 지속시간
+
+        //딜레이 시간 코루틴과 패턴 지속시간 코루틴을 두개 만드는게 최선인가에 대한 고민 .... 일단 이렇게 하겠습니다
 
     }
 
@@ -89,12 +95,12 @@ public class PatternSpawner : MonoBehaviour
     private IEnumerator patternTime(float time)   //패턴 지속시간
     {
         yield return new WaitForSeconds(time);
-        ChangePattern(0);
+        ChangePattern(pattern);
     }
-    private IEnumerator patternDelay(Patterns newPattern)   //패턴과 패턴 사이 딜레이 시간
+    private IEnumerator patternDelay()   //패턴과 패턴 사이 딜레이 시간
     {
-        yield return new WaitForSeconds(3);
-        StartCoroutine(newPattern.ToString());
+        yield return new WaitForSeconds(delayTime);
+        StartCoroutine(pattern.ToString());
     }
 
 }
