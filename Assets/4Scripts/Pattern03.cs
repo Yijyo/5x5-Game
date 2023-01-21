@@ -13,7 +13,7 @@ public class Pattern03 : MonoBehaviour
     [SerializeField]
     private float spawnCycle;
 
-    private List<GameObject> clone;
+    private List<GameObject> clone = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -40,14 +40,14 @@ public class Pattern03 : MonoBehaviour
                 {
                     Vector3 position = new Vector3(x + i, y + j, 0);
                     GameObject t = Instantiate(patternPrefab, position, Quaternion.identity);
-                    //clone.Add(t);
+                    clone.Add(t);
                 }
             }
             yield return new WaitForSeconds(spawnCycle);
-            /*foreach (GameObject go in clone)
+            foreach (GameObject go in clone)
             {
                 Destroy(go);
-            }*/
+            }
         }
     }
 }
