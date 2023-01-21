@@ -371,15 +371,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ffcfe2ff4682d4a8f75f59876ebbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 3
-  patternPrefab: []
-  pt01Prefab: {fileID: 5764945042045680986, guid: 5cad980fc1f9e0b4da11353d78629e7b, type: 3}
-  pt01SpawnCycle: 0.3
-  pt01time: 10
-  pt03Prefab: {fileID: 7337042749066850541, guid: 59de5b368a09bae418161939a36c83b7, type: 3}
-  pt03Boom: {fileID: 4826990805499612208, guid: 6f97f447a04e6404f8cc5be1fbfa5c34, type: 3}
-  pt03SpawnCycle: 0.1
-  pt03time: 10
+  "\uD328\uD134\uBC88\uD638": 0
+  delayTime: 0
+  clearPattern: 0
+  patternInfo:
+  - patternPrefab:
+    - {fileID: 5764945042045680986, guid: 5cad980fc1f9e0b4da11353d78629e7b, type: 3}
+    spawnCycle: 0.5
+    patternTime: 10
+  - patternPrefab:
+    - {fileID: 7337042749066850541, guid: 59de5b368a09bae418161939a36c83b7, type: 3}
+    - {fileID: 4826990805499612208, guid: 6f97f447a04e6404f8cc5be1fbfa5c34, type: 3}
+    spawnCycle: 1
+    patternTime: 10
 --- !u!4 &335210734
 Transform:
   m_ObjectHideFlags: 0
@@ -861,7 +865,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593460532}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1

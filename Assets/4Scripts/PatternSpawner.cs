@@ -2,61 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Patterns { pattern01 = 0, pattern03 }
 
 public class PatternSpawner : MonoBehaviour
 {
+    private string[] Pattern = new string[] { "pattern01", "pattern03" };
 
+
+    [Header("TEST")]
+    [SerializeField]
+    private int 패턴번호 = 0;
     [Header("Common")]
     [SerializeField]
-    private float delayTime = 3;
+    private float delayTime = 1;
     [SerializeField]
-    private GameObject[] patternPrefab;
+    private bool clearPattern = false;  // 패턴의 클리어 조건 달성 여부
 
-    [Header("Pattern01")]
-    [SerializeField]
-    private GameObject pt01Prefab;
-    [SerializeField]
-    private float pt01SpawnCycle;
-    [SerializeField]
-    private float pt01time = 10;
 
-    [Header("Pattern03")]
     [SerializeField]
-    private GameObject pt03Prefab;
-    [SerializeField]
-    private GameObject pt03Boom;
-    [SerializeField]
-    private float pt03SpawnCycle = 1;
-    [SerializeField]
-    private float pt03time = 10;
+    private PatternInfo[] patternInfo;
 
-     
 
-    private Patterns pattern = Patterns.pattern03;
+    private int N; // pattern Number
+
+
     public void Start()
     {
-        ChangePattern(pattern);
+        
+        N = RandomN();
+        SpawnPattern();
     }
 
-    public void ChangePattern(Patterns newPattern)
+
+    
+    private int RandomN()  // 랜덤으로 패턴 번호를 뽑아오는 함수
     {
-        StopCoroutine(newPattern.ToString());
-        StartCoroutine("patternDelay"); //패턴과 패턴 사이 딜레이 시간
-        StartCoroutine("patternTime",pt01time); //패턴 지속시간
-
-        //딜레이 시간 코루틴과 패턴 지속시간 코루틴을 두개 만드는게 최선인가에 대한 고민 .... 일단 이렇게 하겠습니다
-
+        return Random.Range(패턴번호, 패턴번호);
     }
-
 
 
     
     private IEnumerator pattern01()
     {
-
+        clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
         int flag = 1;
         int x=0, y=0, z=0;
+        int hell = 1;  //hell 난이도 테스트용.
         Vector3 direction = new Vector3(0, 0, 0);
 
         int SetXy(int num)
@@ -97,15 +87,19 @@ public class PatternSpawner : MonoBehaviour
             //좌 -> 우 일때 num = 1 , flag = 1
             //우 -> 좌 일때 num = 1 , flag = -1
             Vector3 position = new Vector3(x, y, 0);
-            GameObject clone = Instantiate(pt01Prefab, position, Quaternion.identity);
+            GameObject clone = Instantiate(patternInfo[N].patternPrefab[0], position, Quaternion.identity);
             clone.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, z);
             clone.GetComponent<PatternSquareMove>().MoveTo(direction);
 
-            yield return new WaitForSeconds(pt01SpawnCycle);
+            yield return new WaitForSeconds(patternInfo[N].spawnCycle);
+            hell++;
+            if (hell > 30)
+                patternInfo[N].spawnCycle = 0.2f;
         }
     }
     private IEnumerator pattern03()
     {
+        clearPattern = true; // 이 패턴은 별도의 클리어 조건이 없습니다.
         float waitTime = 1;
         List<GameObject> clone_patter03 = new List<GameObject>();
         while (true)
@@ -117,7 +111,7 @@ public class PatternSpawner : MonoBehaviour
             Vector3 position_bomb = new Vector3(x, y, 0);
 
             // 랜덤 좌표 x, y에 폭탄 이미지 생성
-            GameObject clone_bomb = Instantiate(pt03Boom, position_bomb, Quaternion.identity);
+            GameObject clone_bomb = Instantiate(patternInfo[N].patternPrefab[1], position_bomb, Quaternion.identity);
 
             // waittime 기다리고
             yield return new WaitForSeconds(waitTime);
@@ -131,11 +125,11 @@ public class PatternSpawner : MonoBehaviour
                 for (int j = -1; j < 2; j++)
                 {
                     Vector3 position = new Vector3(x + i, y + j, 0);
-                    GameObject clone_pattern03 = Instantiate(pt03Prefab, position, Quaternion.identity);
+                    GameObject clone_pattern03 = Instantiate(patternInfo[N].patternPrefab[0], position, Quaternion.identity);
                     clone_patter03.Add(clone_pattern03);
                 }
             }
-            yield return new WaitForSeconds(pt03SpawnCycle);
+            yield return new WaitForSeconds(patternInfo[N].spawnCycle);
             // 3x3 패턴 제거
             foreach (GameObject go in clone_patter03)
             {
@@ -146,16 +140,35 @@ public class PatternSpawner : MonoBehaviour
 
 
 
-
-    private IEnumerator patternTime(float time)   //패턴 지속시간
+    public void SpawnPattern()
     {
-        yield return new WaitForSeconds(time);
-        ChangePattern(pattern);
-    }
-    private IEnumerator patternDelay()   //패턴과 패턴 사이 딜레이 시간
-    {
-        yield return new WaitForSeconds(delayTime);
-        StartCoroutine(pattern.ToString());
+        StartCoroutine("StartPattern"); 
     }
 
+    private IEnumerator StartPattern() 
+    {
+        while(true){
+            StopCoroutine(Pattern[N]);                                           // 이전에 실행되던 패턴 Stop
+            N = RandomN();                                                       // 새로운 패턴 번호 뽑기
+            yield return new WaitForSeconds(delayTime);                          // 딜레이 시간 대기
+            StartCoroutine(Pattern[N]);                                          // 새로운 패턴 Start
+            yield return new WaitForSeconds(patternInfo[N].patternTime);         // 패턴 지속시간 만큼 대기
+            while (clearPattern == false) yield return new WaitForSeconds(1);    // 패턴 클리어 조건 달성할 때 까지 대기
+            
+
+            
+        }
+    } 
+
+}
+
+
+
+
+[System.Serializable]
+public struct PatternInfo
+{
+    public GameObject[] patternPrefab; //패턴 프리팹
+    public float spawnCycle;  // 패턴 생성 주기 
+    public float patternTime; // 패턴 지속시간
 }
