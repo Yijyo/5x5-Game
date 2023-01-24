@@ -351,6 +351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 335210734}
+  - component: {fileID: 335210735}
   - component: {fileID: 335210733}
   m_Layer: 0
   m_Name: PatternSpawner
@@ -371,20 +372,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ffcfe2ff4682d4a8f75f59876ebbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\uD328\uD134\uBC88\uD638": 0
-  delayTime: 0
-  clearPattern: 0
+  "\uD328\uD134\uC2DC\uC791\uBC88\uD638": 0
+  "\uD328\uD134\uB05D\uBC88\uD638": 1
+  delayTime: 1
   patternInfo:
   - patternPrefab:
     - {fileID: 5764945042045680986, guid: 5cad980fc1f9e0b4da11353d78629e7b, type: 3}
     - {fileID: 2552732800083838131, guid: bc90e7faa97504e4dbb52073becc16bd, type: 3}
     spawnCycle: 0.5
     patternTime: 10
+    clearPattern: 1
   - patternPrefab:
     - {fileID: 7337042749066850541, guid: 59de5b368a09bae418161939a36c83b7, type: 3}
     - {fileID: 4826990805499612208, guid: 6f97f447a04e6404f8cc5be1fbfa5c34, type: 3}
     spawnCycle: 1
     patternTime: 10
+    clearPattern: 1
 --- !u!4 &335210734
 Transform:
   m_ObjectHideFlags: 0
@@ -400,6 +403,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &335210735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335210732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1021a7cedf97c9418421112f26eade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternPrefab: []
+  spawnCycle: 0
+  patternTime: 0
+  clearPattern: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
