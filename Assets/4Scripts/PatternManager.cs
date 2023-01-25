@@ -27,7 +27,7 @@ public class PatternManager : MonoBehaviour
         patternTime = Info.patternTime;
         clearPattern = Info.clearPattern;
 
-}
+    }
     
     private IEnumerator pattern01()
     {
@@ -93,7 +93,7 @@ public class PatternManager : MonoBehaviour
     private IEnumerator pattern03()
     {
         clearPattern = true; // 이 패턴은 별도의 클리어 조건이 없습니다.
-        float waitTime = 1;
+        //float waitTime = 1;
         List<GameObject> clone_patter03 = new List<GameObject>();
         while (true)
         {
@@ -106,11 +106,9 @@ public class PatternManager : MonoBehaviour
             // 랜덤 좌표 x, y에 폭탄 이미지 생성
             GameObject clone_bomb = Instantiate(patternPrefab[1], position_bomb, Quaternion.identity);
 
-            // waittime 기다리고
-            yield return new WaitForSeconds(waitTime);
 
-            // 폭탄 이미지 제거
-            Destroy(clone_bomb);
+            /*// waittime 기다리고
+            yield return new WaitForSeconds(waitTime);
 
             // 랜덤 좌표 x, y기준으로 3x3 크기의 패턴 생성
             for (int i = -1; i < 2; i++)
@@ -121,13 +119,8 @@ public class PatternManager : MonoBehaviour
                     GameObject clone_pattern03 = Instantiate(patternPrefab[0], position, Quaternion.identity);
                     clone_patter03.Add(clone_pattern03);
                 }
-            }
+            }*/
             yield return new WaitForSeconds(spawnCycle);
-            // 3x3 패턴 제거
-            foreach (GameObject go in clone_patter03)
-            {
-                Destroy(go);
-            }
         }
     }
 
