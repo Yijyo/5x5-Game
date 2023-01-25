@@ -18,10 +18,7 @@ public class PatternManager : MonoBehaviour
     [SerializeField]
     public bool clearPattern = false; // 별도의 클리어 조건 충족 여부 (없으면 체크)
     [SerializeField]
-    private GameObject floor;
-
-    public PlayerStatus playerStatus;
-
+    private GameObject player;
 
     public void InfoPattern(PatternInfo Info)   //PatternSpawner로 부터 패턴의 정보를 받아옴
     {
@@ -115,8 +112,12 @@ public class PatternManager : MonoBehaviour
     {
         clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
 
-        playerStatus.GetComponent<PlayerStatus>().OffPlayMove();
-        floor.GetComponent<OnOutlineUnder>().OnSprite();
+        player.SetActive(false);
+        GameObject clone_player = Instantiate(patternPrefab[3], Vector3.zero, Quaternion.identity);
+
+        Vector3 floorPosition = new Vector3(0, -2.5f, 0);
+        GameObject clone_floor = Instantiate(patternPrefab[2], floorPosition, Quaternion.identity);
+
 
         while (true)
         {
