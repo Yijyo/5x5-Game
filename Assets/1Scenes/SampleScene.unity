@@ -381,9 +381,8 @@ MonoBehaviour:
     - {fileID: 2552732800083838131, guid: bc90e7faa97504e4dbb52073becc16bd, type: 3}
     spawnCycle: 0.5
     patternTime: 10
-    clearPattern: 1
+    clearPattern: 0
   - patternPrefab:
-    - {fileID: 7337042749066850541, guid: 59de5b368a09bae418161939a36c83b7, type: 3}
     - {fileID: 4826990805499612208, guid: 6f97f447a04e6404f8cc5be1fbfa5c34, type: 3}
     spawnCycle: 1
     patternTime: 10
@@ -418,7 +417,7 @@ MonoBehaviour:
   patternPrefab: []
   spawnCycle: 0
   patternTime: 0
-  clearPattern: 0
+  clearPattern: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
