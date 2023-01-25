@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ffcfe2ff4682d4a8f75f59876ebbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\uD328\uD134\uC2DC\uC791\uBC88\uD638": 1
-  "\uD328\uD134\uB05D\uBC88\uD638": 1
+  "\uD328\uD134\uC2DC\uC791\uBC88\uD638": 0
+  "\uD328\uD134\uB05D\uBC88\uD638": 0
   delayTime: 1
   patternInfo:
   - patternPrefab:
