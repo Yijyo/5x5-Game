@@ -8,9 +8,20 @@ public class PlayerStatus : MonoBehaviour
     private GameObject gameManager;
 
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigid;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
+    }
+
+    public void OffPlayMove()
+    {
+        transform.position = new Vector3(0, 0, 0);
+        gameObject.GetComponent<PlayerMove>().enabled = false;
+        gameObject.GetComponent<Pattern04PlayerMove>().enabled = true;
+        rigid.simulated = true;
+        rigid.gravityScale = 10;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

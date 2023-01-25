@@ -17,7 +17,10 @@ public class PatternManager : MonoBehaviour
     private float patternTime; // 패턴 지속시간
     [SerializeField]
     public bool clearPattern = false; // 별도의 클리어 조건 충족 여부 (없으면 체크)
+    [SerializeField]
+    private GameObject floor;
 
+    public PlayerStatus playerStatus;
 
 
     public void InfoPattern(PatternInfo Info)   //PatternSpawner로 부터 패턴의 정보를 받아옴
@@ -104,6 +107,28 @@ public class PatternManager : MonoBehaviour
 
             // 랜덤 좌표 x, y에 폭탄 이미지 생성
             GameObject clone_bomb = Instantiate(patternPrefab[0], position_bomb, Quaternion.identity);
+            yield return new WaitForSeconds(spawnCycle);
+        }
+    }
+
+    private IEnumerator pattern04()
+    {
+        clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
+
+        playerStatus.GetComponent<PlayerStatus>().OffPlayMove();
+        floor.GetComponent<OnOutlineUnder>().OnSprite();
+
+        while (true)
+        {
+            int num = Random.Range(0, 2);
+            float positionY = 0;
+            if (num == 0) positionY = -1.6f;
+            else if (num == 1) positionY = -0.6f;
+
+            Vector3 position = new Vector3(9, positionY, 0);
+            GameObject clone_patter04 = Instantiate(patternPrefab[num], position, Quaternion.identity);
+
+
             yield return new WaitForSeconds(spawnCycle);
         }
     }
