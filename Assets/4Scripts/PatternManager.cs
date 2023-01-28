@@ -111,8 +111,6 @@ public class PatternManager : MonoBehaviour
     private IEnumerator pattern04()
     {
         clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
-
-        player.SetActive(false);
         GameObject clone_player = Instantiate(patternPrefab[3], Vector3.zero, Quaternion.identity);
 
         Vector3 floorPosition = new Vector3(0, -2.5f, 0);
