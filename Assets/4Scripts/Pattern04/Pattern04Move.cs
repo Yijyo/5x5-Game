@@ -8,10 +8,9 @@ public class Pattern04Move : MonoBehaviour
     private float moveSpeed;
 
     public float pattern04_time;
-
-    private Vector3 direction = Vector3.left;
     private void Update()
     {
+        Vector3 direction = Vector3.left;
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 }
