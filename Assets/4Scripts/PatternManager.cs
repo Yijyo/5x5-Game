@@ -18,7 +18,16 @@ public class PatternManager : MonoBehaviour
     [SerializeField]
     public bool clearPattern = false; // 별도의 클리어 조건 충족 여부 (없으면 체크)
     [SerializeField]
+    public float Timer = 0;
+    [Header("...")]
+    [SerializeField]
     private GameObject player;
+
+
+    private void Update()
+    {
+        Timer += Time.deltaTime;
+    }
 
     public void InfoPattern(PatternInfo Info)   //PatternSpawner로 부터 패턴의 정보를 받아옴
     {
@@ -29,6 +38,7 @@ public class PatternManager : MonoBehaviour
 
     }
     
+
     private IEnumerator pattern01()
     {
         clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
@@ -110,12 +120,16 @@ public class PatternManager : MonoBehaviour
 
     private IEnumerator pattern04()
     {
+        
         clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
+        
         GameObject clone_player = Instantiate(patternPrefab[3], Vector3.zero, Quaternion.identity);
 
         Vector3 floorPosition = new Vector3(0, -2.5f, 0);
         GameObject clone_floor = Instantiate(patternPrefab[2], floorPosition, Quaternion.identity);
-
+        Destroy(clone_player,patternTime);
+        Destroy(clone_floor,patternTime);
+        
 
         while (true)
         {
@@ -130,5 +144,9 @@ public class PatternManager : MonoBehaviour
 
             yield return new WaitForSeconds(spawnCycle);
         }
+
     }
+
+
+    
 }

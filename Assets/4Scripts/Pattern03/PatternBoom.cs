@@ -11,6 +11,11 @@ public class PatternBoom : MonoBehaviour
     private GameObject clone_pattern03;
     private float m_time;
 
+
+    private void Start()
+    {
+        Destroy(gameObject, 3);
+    }
     private void Update()
     {
         m_time += Time.deltaTime;
@@ -22,16 +27,11 @@ public class PatternBoom : MonoBehaviour
     }
 
     private void Boom()
-    {   
+    {
         clone_pattern03 = Instantiate(patternPrefab, transform.position, Quaternion.identity);
-        Invoke("Destroy", 1f);
         gameObject.SetActive(false);
+        Destroy(clone_pattern03, 3);
     }
 
-    private void Destroy()
-    {
-        
-        Destroy(clone_pattern03);
-        Destroy(gameObject);
-    }
+
 }

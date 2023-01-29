@@ -40,6 +40,7 @@ public class PatternSpawner : MonoBehaviour
             N = RandomN();                                                                      // 새로운 패턴 번호 뽑기
             patternManager.InfoPattern(patternInfo[N]);                                         // patternManager에 뽑은 번호의 패턴 정보 전달
             yield return new WaitForSeconds(delayTime);                                         // 딜레이 시간 대기
+            patternManager.Timer = 0;
             patternManager.StartCoroutine(Pattern[N]);                                          // 새로운 패턴 Start
             yield return new WaitForSeconds(patternInfo[N].patternTime);                        // 패턴 지속시간 만큼 대기
             while (patternManager.clearPattern == false) yield return new WaitForSeconds(1);    // 패턴 클리어 조건 달성할 때 까지 대기     

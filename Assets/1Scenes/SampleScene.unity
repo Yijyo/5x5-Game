@@ -372,9 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ffcfe2ff4682d4a8f75f59876ebbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\uD328\uD134\uC2DC\uC791\uBC88\uD638": 1
-  "\uD328\uD134\uB05D\uBC88\uD638": 1
-  delayTime: 1
+  "\uD328\uD134\uC2DC\uC791\uBC88\uD638": 2
+  "\uD328\uD134\uB05D\uBC88\uD638": 2
+  delayTime: 3
   patternInfo:
   - patternPrefab:
     - {fileID: 5764945042045680986, guid: 5cad980fc1f9e0b4da11353d78629e7b, type: 3}
@@ -392,8 +392,8 @@ MonoBehaviour:
     - {fileID: 2490274867301371335, guid: 6f025d8a515d0754bb052c5c47be285f, type: 3}
     - {fileID: 2239691017591346894, guid: 9d987a9035f76c94c8316a1f09eb4a36, type: 3}
     - {fileID: 4408233647893694754, guid: 08707cd2fa3cf7e43865a5c72a8704fb, type: 3}
-    spawnCycle: 1
-    patternTime: 102
+    spawnCycle: 2
+    patternTime: 10
     clearPattern: 1
 --- !u!4 &335210734
 Transform:
@@ -426,6 +426,7 @@ MonoBehaviour:
   spawnCycle: 0
   patternTime: 0
   clearPattern: 1
+  Timer: 0
   player: {fileID: 1593460532}
 --- !u!1 &348885918
 GameObject:
