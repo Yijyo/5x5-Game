@@ -14,7 +14,7 @@ public class PatternBoom : MonoBehaviour
     private void Update()
     {
         m_time += Time.deltaTime;
-        if (m_time > 1)
+        if (m_time > 2)
         {
             Boom();
             m_time = 0;

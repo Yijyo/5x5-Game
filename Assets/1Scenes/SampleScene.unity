@@ -384,7 +384,7 @@ MonoBehaviour:
     clearPattern: 1
   - patternPrefab:
     - {fileID: 4826990805499612208, guid: 6f97f447a04e6404f8cc5be1fbfa5c34, type: 3}
-    spawnCycle: 2
+    spawnCycle: 1
     patternTime: 10
     clearPattern: 1
   - patternPrefab:
