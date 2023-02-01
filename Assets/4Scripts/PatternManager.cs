@@ -123,7 +123,7 @@ public class PatternManager : MonoBehaviour
     private void OnPlayer()
     {
         player.SetActive(true);
-        playerShadow.SetActive(true);
+        
     }
 
     private IEnumerator pattern04()
@@ -140,7 +140,7 @@ public class PatternManager : MonoBehaviour
         Destroy(clone_floor, patternTime);
         
         player.SetActive(false);
-        playerShadow.SetActive(false);
+        
 
         Invoke("OnPlayer", patternTime);
 

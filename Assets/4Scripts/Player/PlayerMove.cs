@@ -12,18 +12,22 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             transform.position += Vector3.up;
+            transform.GetChild(0).position += Vector3.down;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             transform.position += Vector3.down;
+            transform.GetChild(0).position += Vector3.up;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += Vector3.left;
+            transform.GetChild(0).position += Vector3.right;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.position += Vector3.right;
+            transform.GetChild(0).position += Vector3.left;
         }
         if (Mathf.Abs(transform.position.x) > 2 )
         {
