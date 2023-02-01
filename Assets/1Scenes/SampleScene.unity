@@ -392,7 +392,7 @@ MonoBehaviour:
     - {fileID: 2490274867301371335, guid: 6f025d8a515d0754bb052c5c47be285f, type: 3}
     - {fileID: 2239691017591346894, guid: 9d987a9035f76c94c8316a1f09eb4a36, type: 3}
     - {fileID: 4408233647893694754, guid: 08707cd2fa3cf7e43865a5c72a8704fb, type: 3}
-    spawnCycle: 2
+    spawnCycle: 1
     patternTime: 10
     clearPattern: 1
 --- !u!4 &335210734
@@ -428,6 +428,7 @@ MonoBehaviour:
   clearPattern: 1
   Timer: 0
   player: {fileID: 1593460532}
+  playerShadow: {fileID: 348885918}
 --- !u!1 &348885918
 GameObject:
   m_ObjectHideFlags: 0
