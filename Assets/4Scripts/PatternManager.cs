@@ -22,6 +22,8 @@ public class PatternManager : MonoBehaviour
     [Header("...")]
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject playerShadow;
 
 
     private void Update()
@@ -118,6 +120,12 @@ public class PatternManager : MonoBehaviour
         }
     }
 
+    private void OnPlayer()
+    {
+        player.SetActive(true);
+        playerShadow.SetActive(true);
+    }
+
     private IEnumerator pattern04()
     {
         
@@ -127,26 +135,26 @@ public class PatternManager : MonoBehaviour
 
         Vector3 floorPosition = new Vector3(0, -2.5f, 0);
         GameObject clone_floor = Instantiate(patternPrefab[2], floorPosition, Quaternion.identity);
-        Destroy(clone_player,patternTime);
-        Destroy(clone_floor,patternTime);
         
+        Destroy(clone_player, patternTime);
+        Destroy(clone_floor, patternTime);
+        
+        player.SetActive(false);
+        playerShadow.SetActive(false);
+
+        Invoke("OnPlayer", patternTime);
 
         while (true)
         {
             int num = Random.Range(0, 2);
             float positionY = 0;
-            if (num == 0) positionY = -1.6f;
-            else if (num == 1) positionY = -0.6f;
+            if (num == 0) positionY = -1.5f;
+            else if (num == 1) positionY = -0.5f;
 
             Vector3 position = new Vector3(9, positionY, 0);
             GameObject clone_patter04 = Instantiate(patternPrefab[num], position, Quaternion.identity);
 
-
             yield return new WaitForSeconds(spawnCycle);
         }
-
     }
-
-
-    
 }

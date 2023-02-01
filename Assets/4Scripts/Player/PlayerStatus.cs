@@ -13,6 +13,16 @@ public class PlayerStatus : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void OnEnable()
+    {
+        gameObject.GetComponent<PlayerMove>().enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        gameObject.GetComponent<PlayerMove>().enabled = false;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
