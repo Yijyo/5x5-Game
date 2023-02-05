@@ -102,6 +102,23 @@ public class PatternManager : MonoBehaviour
         }
     }
 
+    private IEnumerator pattern02()
+    {
+        clearPattern = true; // 이 패턴은 별도의 클리어 조건이 없습니다.
+        while (true)
+        {
+            // 랜덤 좌표 x, y값 생성
+            int x = Random.Range(-3, 4);
+            int y = Random.Range(-2, 3);
+
+            Vector3 position_circle = new Vector3(x, y, 0);
+
+            // 랜덤 좌표 x, y에 공전 기준체 클론 생성
+            GameObject clone_circle = Instantiate(patternPrefab[0], position_circle, Quaternion.identity);
+            yield return new WaitForSeconds(spawnCycle);
+        }
+    }
+
     private IEnumerator pattern03()
     {
         clearPattern = true; // 이 패턴은 별도의 클리어 조건이 없습니다.
