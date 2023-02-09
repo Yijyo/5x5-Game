@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PatternSpawner : MonoBehaviour
 {
-    private string[] Pattern = new string[] { "pattern01", "pattern03", "pattern04" };
+    private string[] Pattern = new string[] { "pattern01", "pattern02", "pattern03", "pattern04" };
 
     private PatternManager patternManager;
 
