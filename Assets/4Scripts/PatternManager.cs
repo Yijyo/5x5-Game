@@ -37,7 +37,6 @@ public class PatternManager : MonoBehaviour
         spawnCycle = Info.spawnCycle;
         patternTime = Info.patternTime;
         clearPattern = Info.clearPattern;
-
     }
     
 
@@ -140,12 +139,10 @@ public class PatternManager : MonoBehaviour
     private void OnPlayer()
     {
         player.SetActive(true);
-        
     }
 
     private IEnumerator pattern04()
     {
-        
         clearPattern = true;   // 이 패턴은 별도의 클리어 조건이 없습니다.
         
         GameObject clone_player = Instantiate(patternPrefab[3], Vector3.zero, Quaternion.identity);
@@ -157,8 +154,6 @@ public class PatternManager : MonoBehaviour
         Destroy(clone_floor, patternTime);
         
         player.SetActive(false);
-        
-
         Invoke("OnPlayer", patternTime);
 
         while (true)
